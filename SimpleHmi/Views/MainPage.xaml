@@ -1,0 +1,549 @@
+﻿<UserControl x:Class="SimpleHmi.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:SimpleHmi.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SimpleHmi.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SimpleHmi.ViewModels"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="700"
+             d:DesignWidth="1200"
+             mc:Ignorable="d"
+             xmlns:design="clr-namespace:SimpleHmi.Designer"
+             d:DataContext="{d:DesignInstance design:DesignMainPageViewModel, IsDesignTimeCreatable=True}">
+    <UserControl.Resources>
+        <Converters:BooleanToBrushConverter x:Key="BooleanToBrushConverter" />
+    </UserControl.Resources>   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Background="WhiteSmoke" >
+        <TextBox Width="117"
+                 Height="28"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Text="{Binding IpAddress}"
+                 TextWrapping="Wrap" />
+        <Button Width="110"
+                Height="28"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding ConnectCommand,
+                                  Mode=OneWay}"
+                Content="Connect" />
+        <Button Width="110"
+                Height="28" 
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Command="{Binding DisconnectCommand,
+                                  Mode=OneWay}"
+                Content="Disconnect" />
+        <TextBlock Margin="10 0"
+                   FontSize="20"    >
+                Connect to PLC
+        </TextBlock>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Background="WhiteSmoke" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1" Height="680">
+                    <StackPanel Orientation="Vertical" Background="WhiteSmoke" >
+                        <!-- Line 5-->
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="  5.1" Margin="5 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.2" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.3" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 5.4" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 5.5" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 5.6" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.7" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.8" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.9" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 5.10" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="5.11" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="5.12" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="   5.13" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="5.14" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="5.15" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  5.16" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 5.17" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="5.18" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Rectangle Width="50" Height="50" Margin="5 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R151,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R152,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R153, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R154, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R155,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R156,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R157, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R158,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R159,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1510,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1511,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1512,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1513,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1514,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1515,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1516,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1517,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1518,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                        </StackPanel>
+
+
+                        <!-- Line 4-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" 4.1" Margin="5 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.2" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.3" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.4" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.5" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 4.6" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.7" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 4.8" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.9" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 4.10" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.11" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.12" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 4.13" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.14" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.15" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  4.16" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.17" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="4.18" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Rectangle Width="50" Height="50" Margin="5 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R141,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R142,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R143, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R144, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R145,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R146,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R147,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R148,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R149,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1410,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1411,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1412,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1413,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1414,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1415,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1416,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1417,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1418,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                        </StackPanel>
+
+
+                        <!-- Line 3-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" 3.1" Margin="5 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.2" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 3.3" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.4" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.5" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 3.6" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.7" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 3.8" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 3.9" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.10" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.11" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.12" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  3.13" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.14" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.15" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 3.16" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.17" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="3.18" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Rectangle Width="50" Height="50" Margin="5 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R131,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R132,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R133, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R134, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R135,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R136,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R137,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R138,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R139,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1310,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1311,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1312,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1313,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1314,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1315,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1316,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1317,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1318,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                        </StackPanel>
+
+
+                        <!-- Line 2-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" 2.1" Margin="5 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.2" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.3" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.4" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.5" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 2.6" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 2.7" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.8" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 2.9" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.10" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.11" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.12" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  2.13" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.14" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.15" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 2.16" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.17" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="2.18" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Rectangle Width="50" Height="50" Margin="5 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R121,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R122,Converter= {StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R123, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R124, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R125,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R126,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R127,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R128,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R129,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1210,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1211,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  Fill="{Binding R1212,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1213,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1214,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1215,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" Fill="{Binding R1216,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1217,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" Fill="{Binding R1218,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                        </StackPanel>
+
+
+                        <!-- Line 1-->
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text=" 1.1" Margin="5 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="   1.2" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="   1.3" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="1.4" Margin="30 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  1.5" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  1.6" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="   1.7" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  1.8" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  1.9" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.10" Margin="20 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.11" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.12" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text="  1.13" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.14" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.15" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.16" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.17" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                            <TextBlock Text=" 1.18" Margin="15 30 0 0" FontSize="20" FontWeight="DemiBold" ></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" >
+
+                            <Rectangle Width="50" Height="50" Margin="5 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R111,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R112,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R113, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R114, Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R115,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R116,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R117,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R118,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R119,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1110,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1111,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black"  
+                       Fill="{Binding R1112,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1113,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1114,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1115,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" Margin="10 0 0 0" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1116,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1117,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                            <Rectangle Width="50" Height="50" StrokeThickness="2" Stroke="Black" 
+                       Fill="{Binding R1118,Converter={StaticResource BooleanToBrushConverter}}"></Rectangle>
+                        </StackPanel>
+
+
+                        <StackPanel Orientation="Horizontal" Margin="20">
+                            <Rectangle Width="50" Height="50" Margin="30 0 0 0" StrokeThickness="1" Fill="SteelBlue"></Rectangle>
+                            <TextBlock Text="Full" FontSize="20" Margin="20"/>
+                            <Rectangle Width="50" Height="50" Margin="20 0 0 0" StrokeThickness="1" Fill="White" ></Rectangle>
+                            <TextBlock Text="Empty" FontSize="20" Margin="20"/>
+                        </StackPanel>
+
+                        <!-- Status bar-->
+
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="    Automation Mode"></TextBlock>
+                                    <Rectangle Width="100" 
+                                               Height="30" 
+                                               StrokeThickness="2" 
+                                               Stroke="Black" 
+                                               Fill="{Binding ModeAuto,Converter={StaticResource BooleanToBrushConverter}}">
+                                    </Rectangle>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="      Manual Mode"></TextBlock>
+                                    <Rectangle Width="100" 
+                                               Height="30" 
+                                               StrokeThickness="2" 
+                                               Stroke="Black" 
+                                               Fill="{Binding ModeMan,Converter={StaticResource BooleanToBrushConverter}}">
+                                    </Rectangle>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1">
+                            <GroupBox Width="250" Header="          Opened Aisle" 
+                                  FontSize="20" HorizontalAlignment="Center" 
+                                  
+                                  Margin="0 10"
+                                  Background="LightGray">
+                                <TextBlock FontSize="70" 
+                                           Text="{Binding OpenedAisle}"
+                                           HorizontalAlignment="Center">
+
+                                </TextBlock>
+                            </GroupBox>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0" Orientation="Vertical">
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 0 0 20"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor1,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor2,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor3,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor4,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor5,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor6,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20  0 0"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor7,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="MOTOR 1"
+                                               Margin="0 10 0 20"/>
+                                    <TextBlock Text="MOTOR 2"
+                                               Margin="0 30 0 20"/>
+                                    <TextBlock Text="MOTOR 3"
+                                               Margin="0 40 0 20"/>
+                                    <TextBlock Text="MOTOR 4"
+                                               Margin="0 35 0 20"/>
+                                    <TextBlock Text="MOTOR 5"
+                                               Margin="0 30 0 20"/>
+                                    <TextBlock Text="MOTOR 6"
+                                               Margin="0 36 0 20"/>
+                                    <TextBlock Text="MOTOR 7"
+                                               Margin="0 30 0 20"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="2">
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 0 0 20"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor8,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor9,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor10,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor11,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor12,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor13,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                    <Ellipse Width="30"
+                                             Height="30"
+                                             Margin="10 20 0 0 "
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             Fill="{Binding Motor14,
+                                                            Converter={StaticResource BooleanToBrushConverter}}"
+                                             Stroke="Black" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3">
+                                    <TextBlock Text="MOTOR 8"
+                                               Margin="0 10 0 20"/>
+                                    <TextBlock Text="MOTOR 9"
+                                               Margin="0 30 0 20"/>
+                                    <TextBlock Text="MOTOR 10"
+                                               Margin="0 40 0 20"/>
+                                    <TextBlock Text="MOTOR 11"
+                                               Margin="0 35 0 20"/>
+                                    <TextBlock Text="MOTOR 12"
+                                               Margin="0 30 0 20"/>
+                                    <TextBlock Text="MOTOR 13"
+                                               Margin="0 36 0 20"/>
+                                    <TextBlock Text="MOTOR 14"
+                                               Margin="0 30 0 0"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

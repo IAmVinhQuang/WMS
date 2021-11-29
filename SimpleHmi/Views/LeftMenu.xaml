@@ -1,0 +1,249 @@
+﻿<UserControl x:Class="SimpleHmi.Views.LeftMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SimpleHmi.Views"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"            
+             d:DesignHeight="700"
+             d:DesignWidth="250"
+             mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel  >
+            <Grid>
+
+                <StackPanel Background="SlateGray">
+                    <TextBlock Margin="20"/>
+                    <!-- button trang chủ -->
+                    <Button     Command="{Binding NavigateToMainPageCommand}"
+                                HorizontalAlignment="Left" 
+                                Grid.Column="0" 
+                                Background="SlateGray"
+                                Style="{StaticResource MaterialDesignFlatButton}"  
+                                ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="Home"  
+                                                         Width="25" 
+                                                         Height="25" 
+                                                         Foreground="White"/>
+                            <TextBlock Text=" Dashboard                                  " 
+                                           Foreground="White" 
+                                           FontSize="18"   />
+                            
+                        </StackPanel>
+                    </Button>
+
+                    <!-- Thiết lập ban đầu-->
+                    <TextBlock 
+                            Text="Initial Setup" 
+                            FontSize="20" 
+                            Foreground="White" 
+                            FontWeight="Bold" 
+                            Margin="10 30"/>
+
+                    <!-- DỮ LIỆU CƠ SỞ-->
+                    <Button 
+                            Command="{Binding NavigateToDuLieuCoSoPageCommand}"
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0" 
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon 
+                                    Kind="Database" 
+                                    Width="25" Height="25" 
+                                    Foreground="White" />
+                            <TextBlock 
+                                    Text=" Initial Data                               " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- QUẢN LÝ KHACH HÀNG -->
+                    <Button 
+                            Command="{Binding NavigateToQuanLyKhachHangPageCommand}"
+                            HorizontalAlignment="Left"
+                            Grid.Column="0" 
+                            Background="SlateGray"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon 
+                                    Kind="Account"  
+                                    Width="25" 
+                                    Height="25"
+                                    Foreground="White"/>
+                            <TextBlock 
+                                    Text=" Customer management            " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- QUẢN LÝ NHÀ CUNG CẤP -->
+                    <Button 
+                            Command="{Binding NavigateToQuanLyNhaCCPageCommand}"
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0" 
+                            Background="SlateGray"
+                            Style="{StaticResource MaterialDesignFlatButton}"  
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon 
+                                    Kind="AccountBox"             
+                                    Width="25" Height="25" 
+                                    Foreground="White"/>
+                            <TextBlock 
+                                    Text=" Supplier Management                 "
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- QUẢN LÝ SẢN PHẨM -->
+                    <Button 
+                            Command="{Binding NavigateToQuanLySPPageCommand}"
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0" 
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}"  
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="Gift"  Width="25" Height="25" Foreground="White"/>
+                            <TextBlock 
+                                    Text=" Product Management                  " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- QUẢN LÝ TỒN KHO-->
+                    <Button
+                            Command="{Binding NavigateToQuanLyTonKhoPageCommand}"
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0"
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}"
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="Stocking"  Width="25" Height="25" Foreground="White" />
+                            <TextBlock
+                                    Text=" Inventory Management                             "
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- QUẢN LÝ NGHIỆP VỤ-->
+                    <TextBlock 
+                            Text="Proffessional Management"
+                            FontSize="20"
+                            Margin="10 20"
+                            Foreground="White" 
+                            FontWeight="Bold"/>
+
+
+                    <!-- NHẬP KHO-->
+                    <Button 
+                            Command="{Binding NavigateToNhapKhoPageCommand}"
+                            HorizontalAlignment="Left"
+                            Grid.Column="0" 
+                            Background="SlateGray"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="ArrowDownBox" Width="25" Height="25" Foreground="White" />
+                            <TextBlock 
+                                    Text=" Import                                 " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- XUẤT KHO-->
+                    <Button 
+                            Command="{Binding NavigateToXuatKhoPageCommand}" 
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0" 
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}"  
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="ArrowUpBox"  Width="25" Height="25" Foreground="White"/>
+                            <TextBlock 
+                                    Text=" Export                                    " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <!-- VỊ TRÍ-->
+                    <Button 
+                            Command="{Binding NavigateToViTriPageCommand}"
+                            HorizontalAlignment="Left"
+                            Grid.Column="0"
+                            Background="SlateGray"
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  />
+                    </Button>
+
+                    <!-- BÁO CÁO THỐNG KÊ-->
+                    <TextBlock 
+                            Text="Statistical Reports" 
+                            FontSize="20" 
+                            Margin="10 20" 
+                            Foreground="White" 
+                            FontWeight="Bold"/>
+
+                    <!-- THỐNG KÊ KHÁC-->
+                    <Button 
+                            Command="{Binding NavigateToThongKePageCommand}"
+                            HorizontalAlignment="Left" Grid.Column="0"
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="ChartLine"  Width="25" Height="25" Foreground="White" />
+                            <TextBlock 
+                                    Text=" Statistic                              " 
+                                    Foreground="White" 
+                                    FontSize="18"   />
+                        </StackPanel>
+                    </Button>
+
+                    <TextBlock
+                            Text="Logout"
+                            FontSize="20"
+                            Margin="10 20" 
+                            Foreground="White" 
+                            FontWeight="Bold"/>
+
+                    <!-- ĐĂNG XUẤT-->
+                    <Button 
+                            Command="{Binding NavigateToLoginWindowCommand}"
+                            Margin="0 0 0 10"
+                            HorizontalAlignment="Left" 
+                            Grid.Column="0" 
+                            Background="SlateGray" 
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            ToolTip="MaterialDesignFlatButton" >
+                        <StackPanel Orientation="Horizontal"  >
+                            <materialDesign:PackIcon Kind="Logout"  Width="25" Height="25" Foreground="White" />
+                            <TextBlock 
+                                    Text=" Logout                             " 
+                                    Foreground="White"
+                                    FontSize="18"   />
+                        </StackPanel>
+                        
+                    </Button>
+                    
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="SimpleHmi.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimpleHmi"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="500" Width="300"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border Padding="10">
+            <StackPanel Background="SteelBlue">
+                <TextBlock Text="LOGIN" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Foreground="White" Margin="30"></TextBlock>
+                <TextBlock Text="Username"  FontSize="18"  Foreground="White" Margin="20 0" />
+                <TextBox Margin="20 10" Name="txtUsername" Background="WhiteSmoke"></TextBox>
+                <TextBlock Text="Password"  FontSize="18"  Foreground="White" Margin="20 0" />
+                <PasswordBox Margin="20 10" Name="txtPassword" Background="WhiteSmoke"></PasswordBox>
+                <Button Content="Login" Click="btnLogin_Click" Margin="20 10" Name="btnLogin" BorderBrush="AntiqueWhite" Background="Blue">
+
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

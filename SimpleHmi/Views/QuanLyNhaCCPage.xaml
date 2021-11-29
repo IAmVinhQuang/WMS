@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SimpleHmi.Views.QuanLyNhaCCPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SimpleHmi.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <Grid Background="WhiteSmoke">
+        <GroupBox
+                    Header="SUPPLIER MANAGEMENT" FontSize="20"
+                    Style="{DynamicResource MaterialDesignGroupBox}" >
+            <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" Width="80" DisplayMemberBinding="{Binding ID}"/>
+                        <GridViewColumn Header="Supplier" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Address" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Phone Number" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="FAX" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Email" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Tax Code" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Orther Information" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                        <GridViewColumn Header="Status" Width="Auto" DisplayMemberBinding="{Binding DisplayName}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+    </Grid>
+</UserControl>
